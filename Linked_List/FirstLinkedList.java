@@ -49,10 +49,73 @@ public class FirstLinkedList
         }
         return check;
     }
+
+    public static Node insertAtBeginning(Node first, int data)
+    {
+        Node newnode = new Node();
+        newnode.data = data;
+
+        newnode.next = first;
+        first = newnode;
+
+        return first;
+    }
+
+    public static Node insertAtTheEnd(Node first, int data)
+    {
+        Node newnode = new Node();
+        newnode.data = data;
+
+        Node current = first;
+        while (current.next != null) 
+        {
+            current = current.next;    
+        }
+        current.next = newnode;
+
+        return first;
+
+    }
+
+    public static Node deleteAtBeginning(Node first)
+    {
+        if (first == null) 
+        {
+            return null;    
+        }
+
+        first = first.next;
+
+        return first;
+    }
+
+    public static Node deleteLast(Node first)
+    {
+        if (first == null) 
+        {
+            return null;    
+        }
+
+        if (first.next == null) 
+        {
+            return null;    
+        }
+        Node current = first;
+        Node prev = null;
+
+        while (current.next != null) 
+        {
+            prev = current;
+            current = current.next;    
+        }
+        prev.next = null;
+
+        return first;
+    }
     public static void main(String[] args) 
     {
         Scanner sc = new Scanner(System.in);
-        
+
         Node first = new Node();
         Node second = new Node();
         Node third = new Node();
@@ -87,5 +150,23 @@ public class FirstLinkedList
         {
             System.out.println(num + " is not present!");
         }
+
+        System.out.println("After inserting node in the beginning :");
+        first = insertAtBeginning(first, 88);
+        display(first);
+
+        System.out.println();
+
+        System.out.println("After inserting node at the end :");
+        first = insertAtTheEnd(first, 100);
+        display(first);
+
+        System.out.println("After deleting the first node:");
+        first = deleteAtBeginning(first);
+        display(first);
+
+        System.out.println("After deleting the last node:");
+        first = deleteLast(first);
+        display(first);
     }
 }
