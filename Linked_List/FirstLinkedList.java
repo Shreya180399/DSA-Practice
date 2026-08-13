@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class FirstLinkedList 
 {
     static class Node 
@@ -30,8 +32,27 @@ public class FirstLinkedList
         }
         return cnt;
     }
+
+    public static boolean search(Node first, int target)
+    {
+        Node current = first;
+        boolean check = false;
+
+        while (current != null) 
+        {
+            if (current.data == target) 
+            {
+                check = true;
+                break;
+            }    
+            current = current.next;
+        }
+        return check;
+    }
     public static void main(String[] args) 
     {
+        Scanner sc = new Scanner(System.in);
+        
         Node first = new Node();
         Node second = new Node();
         Node third = new Node();
@@ -52,5 +73,19 @@ public class FirstLinkedList
 
         int count = countNodes(first);
         System.out.println("The total number of nodes are:" + count);
+
+        System.out.println("Enter the number to check if present :");
+        int num = sc.nextInt();
+
+        boolean isPresent = search(first, num);
+
+        if (isPresent) 
+        {
+            System.out.println(num + " is present !");    
+        }
+        else
+        {
+            System.out.println(num + " is not present!");
+        }
     }
 }
