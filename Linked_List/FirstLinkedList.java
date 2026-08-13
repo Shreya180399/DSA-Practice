@@ -17,6 +17,19 @@ public class FirstLinkedList
         }
         System.out.println("null");
     }
+
+    public static int countNodes(Node first)
+    {
+        Node current = first;
+
+        int cnt = 0;
+        while (current != null) 
+        {
+            cnt++;
+            current = current.next;    
+        }
+        return cnt;
+    }
     public static void main(String[] args) 
     {
         Node first = new Node();
@@ -35,5 +48,9 @@ public class FirstLinkedList
         fourth.next = null;
 
         display(first);
+        System.out.println();
+
+        int count = countNodes(first);
+        System.out.println("The total number of nodes are:" + count);
     }
 }
